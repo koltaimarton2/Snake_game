@@ -61,7 +61,10 @@
 
     </div>
     <canvas width="10" height="10" id="gameCanvas" class="centered"></canvas>
-    <div class="centered"><button><p>Restart</p></button></div>
+    <div class="centered">
+        <button id="lossButton" onclick="restart(this)"><p>Restart</p></button>
+    </div>
+    <h2 id="gameOver" class="centered">GAME OVER</h2>
 
     <img src="img/disz_kigyo.png" class="right" alt="">
 

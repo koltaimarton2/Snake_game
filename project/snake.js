@@ -5,8 +5,8 @@ let columnCount = 15
 let context;
 
 
-let snakeX = blockSize * (Math.floor(Math.random() * columnCount) + 1);
-let snakeY = blockSize * (Math.floor(Math.random() * rowCount) + 1);
+let snakeX = blockSize * (Math.floor(Math.random() * columnCount));
+let snakeY = blockSize * (Math.floor(Math.random() * rowCount));
 
 let speedX = 0;
 let speedY = 0;
@@ -26,7 +26,7 @@ let gameOver = false;
 let snakeColor = 'white'
 let food = 'apple.jpeg'
 
-window.onload = function () {
+window.onload = function(){
     canvas = document.getElementById("gameCanvas");
     canvas.setAttribute('width', columnCount * blockSize);
     canvas.setAttribute('height', rowCount * blockSize);
@@ -84,7 +84,7 @@ function update() {
     for (let i = 1; i < snakeBody.length -1 ; i++) {
          if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) { 
              gameOver = true;
-             return false
+             lossScreen()
          }
      }
 }
@@ -119,5 +119,12 @@ function placeFood() {
 }
 
 function lossScreen() {
-    document.querySelector('button').display = "normal"
+    document.getElementById('lossButton').style.display = "block"
+    document.getElementById('gameOver').style.display = "block"
+}
+
+function restart(button) {
+    button.style.display = "none"
+    document.getElementById('gameOver').style.display = "none"
+    location.reload()
 }
