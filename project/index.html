@@ -9,26 +9,25 @@
 
     <h1>SNAKE</h1>
 
-    <div class="snake">  
-    <div class="menu">
+    <div class="menu left">
         <h2>OPTIONS:</h2>
         <div class="color">
             <label for="colorpick">BODY COLOR: </label>
-            <input type="color" name="colorpick" id="colorpick">
+            <input id="colorpick" type="color">
         </div>
         <p>SPEED:</p>
         <div class="speed_set">
-            <div class="speed"><input type="radio" name="speed" id="slug"> <label for="slug">SLUG</label></div>
-            <div class="speed"><input type="radio" name="speed" id="worm"><label for="worm">WORM</label></div>
-            <div class="speed"><input type="radio" name="speed" id="python"><label for="python">PYTHON</label></div>
+            <input type="radio" name="speed" id="slug"> <label for="slug">SLUG</label>
+            <input type="radio" name="speed" id="worm"><label for="worm">WORM</label>
+            <input type="radio" name="speed" id="python"><label for="python">PYTHON</label>
         </div>
             
 
         <p>APPLES:</p>
         <div class="speed_set">
-            <div class="speed"><input type="radio" name="apples" id="1"> <label for="1">1</label></div>
-            <div class="speed"><input type="radio" name="apples" id="2"><label for="2">2</label></div>
-            <div class="speed"><input type="radio" name="apples" id="3"><label for="3">3</label></div>
+            <input type="radio" name="apples" id="1"> <label for="1">1</label>
+            <input type="radio" name="apples" id="2"><label for="2">2</label>
+            <input type="radio" name="apples" id="3"><label for="3">3</label>
         </div>
 
         <div class="icon">
@@ -61,11 +60,12 @@
             
 
     </div>
+    <canvas width="10" height="10" id="gameCanvas" class="centered"></canvas>
+    <div class="centered"><button><p>Restart</p></button></div>
 
+    <img src="img/disz_kigyo.png" class="right" alt="">
 
         
-        <canvas width="10" height="10" id="gameCanvas" ></canvas>
-    </div>
 
 
     <script src="snake.js"></script>

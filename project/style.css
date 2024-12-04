@@ -19,21 +19,18 @@ h1 {
     text-align: center;
     font-size: 7rem;    
 }
-
-.snake{
-    display: flex;
+h2 {
+    margin: 0;
 }
 
-.menu{
-    padding-left: 20px;
+.menu p {
+    margin: 0;
 }
 
-.color{
-    display: flex;
-}
-
-.color input{
-    margin-left: 10px;
+#colorpick {
+    border: 3px solid black;
+    border-radius: 5px;
+    background-color: transparent;
 }
 
 .speed{
@@ -45,23 +42,59 @@ h1 {
     display: flex;
 }
 
-.alma{
-    display: flex;
-}
-
-.alma_szama{
-    display: flex;
-    margin-right: 10px;
-}
-.icon{
-    display: flex;
-    margin-top: 20px;
-}
-
 #icon {
-    background-color: #9BBA5A;
+    font-family:'Micro 5' ;
+    font-size: 1.8rem;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    align-self: center;
+    height: fit-content;
 }
 
 #eyes{
-    background-color: #9BBA5A;
+    font-family:'Micro 5' ;
+    font-size: 1.8rem;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    align-self: center;
+    height: fit-content;
+}
+
+.centered {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.left {
+    position: fixed;
+    width: 40%;
+    left: 30%;
+    margin-left: -20%;
+}
+
+.right {
+    position: fixed;
+    margin-left:68%;
+}
+
+button {
+    font-family: 'Micro 5';
+    font-size: 3rem;
+    width: 150px;
+    height: 50px;
+    background-color: #000000;
+    color: #9BBA5A;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    margin-top: 145%;
+    display: none;
+}
+
+button  p{
+    margin: 0;
+    line-height: 0.5;
+
 }
