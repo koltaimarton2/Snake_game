@@ -6,6 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #9BBA5A;
+    font-size: 2.5rem;
 }
 canvas {
     border: 2px solid ;
@@ -17,5 +18,50 @@ canvas {
 h1 {
     text-align: center;
     font-size: 7rem;    
+}
 
+.snake{
+    display: flex;
+}
+
+.menu{
+    padding-left: 20px;
+}
+
+.color{
+    display: flex;
+}
+
+.color input{
+    margin-left: 10px;
+}
+
+.speed{
+    display: flex;
+    margin-right: 10px;
+}
+
+.speed_set{
+    display: flex;
+}
+
+.alma{
+    display: flex;
+}
+
+.alma_szama{
+    display: flex;
+    margin-right: 10px;
+}
+.icon{
+    display: flex;
+    margin-top: 20px;
+}
+
+#icon {
+    background-color: #9BBA5A;
+}
+
+#eyes{
+    background-color: #9BBA5A;
 }
