@@ -5,8 +5,8 @@ let columnCount = 15;
 let context;
 
 
-let snakeX = blockSize * (Math.floor(Math.random() * columnCount));
-let snakeY = blockSize * (Math.floor(Math.random() * rowCount));
+let snakeX = 0;
+let snakeY = 0;
 
 let speedX = 0;
 let speedY = 0;
@@ -26,6 +26,26 @@ let gameOver = false;
 let snakeColor = 'white'
 let food = 'apple.jpeg'
 
+function MapSize(input) {
+    if (input.value == "big") {
+        blockSize = 25
+        rowCount = 20
+        columnCount = 20
+        placeFood()
+    }
+    else if (input.value == "mid") {
+        blockSize = 33.33
+        rowCount = 15
+        columnCount = 15
+        placeFood()
+    }
+    else {
+        blockSize = 50
+        rowCount = 10
+        columnCount =10
+        placeFood()
+    }
+} 
 window.onload = function(){
     canvas = document.getElementById("gameCanvas");
     canvas.setAttribute('width', columnCount * blockSize);
