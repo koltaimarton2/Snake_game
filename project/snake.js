@@ -1,6 +1,6 @@
 let blockSize = 33.33;
 let rowCount = 15;
-let columnCount = 15
+let columnCount = 15;
 
 let context;
 
@@ -59,8 +59,8 @@ function update() {
     }
     
     if (Math.floor(snakeBody[0][0]) == Math.floor(foodX) && Math.floor(snakeBody[0][1]) == Math.floor(foodY)) {
-        snakeBody.push(lastBlock);
         placeFood();
+        snakeBody.push(lastBlock);
     }
     context.fillStyle = snakeColor;
     
@@ -75,7 +75,7 @@ function update() {
     
     // console.log(snakeBody)
     
-    if (snakeX < 0 || snakeX > columnCount * blockSize || snakeY < 0 || snakeY > rowCount * blockSize) { 
+    if (snakeX < 0 || snakeX > columnCount * blockSize - blockSize|| snakeY < 0 || snakeY > rowCount * blockSize -blockSize) { 
          gameOver = true;
          console.log(snakeX)
          lossScreen()
@@ -90,22 +90,22 @@ function update() {
 }
 
 function moveSnake(e) {
-    if (e.code == "ArrowDown" && speedY != 1) {
+    if (e.code == "ArrowDown" && speedY != -1) {
         e.preventDefault()
         speedX = 0;
         speedY = 1;
     }
-    if (e.code == "ArrowUp" && speedY != -1) {
+    if (e.code == "ArrowUp" && speedY != 1) {
         e.preventDefault()
         speedX = 0;
         speedY = -1;
     }
-    if (e.code == "ArrowLeft" && speedX != -1) {
+    if (e.code == "ArrowLeft" && speedX != 1) {
         e.preventDefault()
         speedX = -1;
         speedY = 0;
     }
-    if (e.code == "ArrowRight" && speedX != 1) {
+    if (e.code == "ArrowRight" && speedX != -1) {
         e.preventDefault()
         speedX = 1;
         speedY = 0;
