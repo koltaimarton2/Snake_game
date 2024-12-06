@@ -16,7 +16,6 @@ let snakeBody = [[0,0]]
 
 
 
-
 let foodX;
 let foodY;
 
@@ -25,6 +24,9 @@ let gameOver = false;
 
 let snakeColor = 'white'
 let food = 'apple.jpeg'
+
+let interval = 2000;
+
 
 function MapSize(input) {
     if (input.value == "big") {
@@ -46,7 +48,23 @@ function MapSize(input) {
         placeFood()
     }
 } 
-window.onload = function(){
+
+
+function Speed(input) {
+    if (input.value == "python") {
+        interval = 750
+    }
+    else if (input.value == "worm") {
+        interval = 2000
+    }
+    else if (input.value == "slug"){
+        interval = 10000
+    }
+    startGame()
+} 
+
+
+function startGame(){
     canvas = document.getElementById("gameCanvas");
     canvas.setAttribute('width', columnCount * blockSize);
     canvas.setAttribute('height', rowCount * blockSize);
@@ -56,7 +74,7 @@ window.onload = function(){
     placeFood();
 
     document.addEventListener("keydown", moveSnake);
-    setInterval(update, 2000 / 10);
+    setInterval(update, interval / 10);
 }
 
 function update() {

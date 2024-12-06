@@ -5,7 +5,7 @@
     <title>Snake Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="startGame()">
 
     <h1>SNAKE</h1>
 
@@ -17,9 +17,9 @@
         </div>
         <p>SPEED:</p>
         <div class="speed_set">
-            <input type="radio" name="speed" id="slug"> <label for="slug">SLUG</label>
-            <input type="radio" name="speed" id="worm"><label for="worm">WORM</label>
-            <input type="radio" name="speed" id="python"><label for="python">PYTHON</label>
+            <input type="radio" name="speed" onchange="Speed(this)" value="slug" id="slug"> <label for="slug">SLUG</label>
+            <input type="radio" name="speed" checked onchange="Speed(this)" value="worm" id="worm"><label for="worm">WORM</label>
+            <input type="radio" name="speed" onchange="Speed(this)" value="python" id="python"><label for="python">PYTHON</label>
         </div>
             
 
