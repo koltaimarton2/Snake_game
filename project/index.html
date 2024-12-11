@@ -11,34 +11,24 @@
 
     <div class="menu left">
         <h2>OPTIONS:</h2>
-        <div class="color">
-            <label for="colorpick">BODY COLOR: </label>
-            <input id="colorpick" type="color">
-        </div>
+        <label for="colorpick">BODY COLOR: </label>
+        <input id="colorpick" type="color" value="#ffffff" oninput="changeColor(this)" onchange="saveValue(this)">
         <p>SPEED:</p>
-        <div class="speed_set">
-            <input type="radio" name="speed" onchange="Speed(this)" value="slug" id="slug"> <label for="slug">SLUG</label>
-            <input type="radio" name="speed" checked onchange="Speed(this)" value="worm" id="worm"><label for="worm">WORM</label>
-            <input type="radio" name="speed" onchange="Speed(this)" value="python" id="python"><label for="python">PYTHON</label>
-        </div>
-            
-
+        <input type="radio" name="speed" onchange="Speed(this) " value="slug" id="slug"> <label for="slug">SLUG</label>
+        <input type="radio" name="speed" checked onchange="Speed(this)" value="worm" id="worm"><label for="worm">WORM</label>
+        <input type="radio" name="speed" onchange="Speed(this)" value="python" id="python"><label for="python">PYTHON</label>
         <p>APPLES:</p>
-        <div class="speed_set">
-            <input type="radio" name="apples" id="1"> <label for="1">1</label>
-            <input type="radio" name="apples" id="2"><label for="2">2</label>
-            <input type="radio" name="apples" id="3"><label for="3">3</label>
-        </div>
-
-        <div class="icon">
-            <label for="icon">ICON:</label>
-            <select name="icon" id="icon">
-                <option value="APPLE">APPLE</option>
-                <option>STAR</option>
-                <option>BANANA</option>
-                <option>PINEAPPLE</option>
-            </select>
-        </div>
+        <input type="radio" name="apples" id="1"> <label for="1">1</label>
+        <input type="radio" name="apples" id="2"><label for="2">2</label>
+        <input type="radio" name="apples" id="3"><label for="3">3</label>
+        <br>
+        <label for="icon">ICON:</label>
+        <select name="icon" id="icon">
+            <option value="APPLE">APPLE</option>
+            <option>STAR</option>
+            <option>BANANA</option>
+            <option>PINEAPPLE</option>
+        </select>
 
         <div class="icon">
             <label for="eyes">EYES:</label>

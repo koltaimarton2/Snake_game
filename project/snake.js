@@ -22,11 +22,19 @@ let foodY;
 
 let gameOver = false;
 
-let snakeColor = 'white'
+let snakeColor = '#ffffff'
 let food = 'apple.jpeg'
 
 let interval = 2000;
 
+
+document.getElementById("colorpick").value = sessionStorage.getItem("colorpick");    
+snakeColor = sessionStorage.getItem("colorpick");
+function saveValue(e){
+    var id = e.id;
+    var val = e.value;
+    sessionStorage.setItem(id, val);
+}
 
 function MapSize(input) {
     if (input.value == "big") {
@@ -51,14 +59,14 @@ function MapSize(input) {
 
 
 function Speed(input) {
-    if (input.value == "python") {
+    if (input.id == "python") {
         interval = 750
     }
-    else if (input.value == "worm") {
+    else if (input.id == "worm") {
         interval = 2000
     }
     else if (input.value == "slug"){
-        interval = 10000
+        interval *=5
     }
     startGame()
 } 
@@ -128,22 +136,23 @@ function update() {
 }
 
 function moveSnake(e) {
-    if (e.code == "ArrowDown" && speedY != -1) {
+    e.preventDefault()
+    if (e.code == "ArrowDown" && speedY != -1 || e.code == "KeyS" && speedY != -1) {
         e.preventDefault()
         speedX = 0;
         speedY = 1;
     }
-    if (e.code == "ArrowUp" && speedY != 1) {
+    if (e.code == "ArrowUp" && speedY != 1 || e.code == "KeyW" && speedY != 1) {
         e.preventDefault()
         speedX = 0;
         speedY = -1;
     }
-    if (e.code == "ArrowLeft" && speedX != 1) {
+    if (e.code == "ArrowLeft" && speedX != 1 ||e.code == "KeyA" && speedX != 1) {
         e.preventDefault()
         speedX = -1;
         speedY = 0;
     }
-    if (e.code == "ArrowRight" && speedX != -1) {
+    if (e.code == "ArrowRight" && speedX != -1 ||e.code == "KeyD" && speedX != -1) {
         e.preventDefault()
         speedX = 1;
         speedY = 0;
@@ -166,3 +175,11 @@ function restart(button) {
     document.getElementById('gameOver').style.display = "none"
     location.reload()
 }
+
+
+function changeColor(color) {
+    snakeColor = color.value
+}
+
+
+
