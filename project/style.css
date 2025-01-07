@@ -39,6 +39,12 @@ h2 {
     padding: 0;
 }
 
+img {
+    margin-left: 600px;
+    width: 400px;
+
+}
+
 .speed{
     display: flex;
     margin-right: 10px;
@@ -74,19 +80,6 @@ h2 {
     transform: translate(-50%, 0);
 }
 
-.left {
-    position: fixed;
-    width: 40%;
-    left: 30%;
-    margin-left: -20%;
-}
-
-.right {
-    position: fixed;
-    margin-left:68%;
-}
-
-
 
 button {
     font-family: 'Micro 5';
@@ -117,7 +110,7 @@ button  p{
     width: 500px;
     margin: auto;
     display: flex;
-    margin-top: 575px;
+    margin-top: 95px;
 }
 
 h3 {
@@ -126,6 +119,11 @@ h3 {
 
 #best_score {
     margin-left: auto;
+}
+
+.main {
+    display:  flex;
+    justify-content: space-around;
 }
 
 

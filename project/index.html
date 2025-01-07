@@ -9,59 +9,64 @@
 
     <h1>SNAKE</h1>
 
-    <div class="menu left">
-        <h2>OPTIONS:</h2>
-        <label for="colorpick">BODY COLOR: </label>
-        <input id="colorpick" type="color" value="#ffffff" oninput="changeColor(this)" onchange="saveValue(this)">
-        <p>SPEED:</p>
-        <input type="radio" name="speed" onchange="Speed(this) " value="slug" id="slug"> <label for="slug">SLUG</label>
-        <input type="radio" name="speed" checked onchange="Speed(this)" value="worm" id="worm"><label for="worm">WORM</label>
-        <input type="radio" name="speed" onchange="Speed(this)" value="python" id="python"><label for="python">PYTHON</label>
-        <p>APPLES:</p>
-        <input type="radio" value="1" onchange="changeAppleCount(this)" name="apples" checked id="1"> <label for="1">1</label>
-        <input type="radio" value="2" onchange="changeAppleCount(this)" name="apples" id="2"><label for="2">2</label>
-        <input type="radio" value="3" onchange="changeAppleCount(this)" name="apples" id="3"><label for="3">3</label>
-        <br>
+    <div class="main">
+        <div class="menu ">
+            <h2>OPTIONS:</h2>
+            <label for="colorpick">BODY COLOR: </label>
+            <input id="colorpick" type="color" value="#ffffff" oninput="changeColor(this)" onchange="saveValue(this)">
+            <p>SPEED:</p>
+            <input type="radio" name="speed" onchange="Speed(this) " value="slug" id="slug"> <label for="slug">SLUG</label>
+            <input type="radio" name="speed" checked onchange="Speed(this)" value="worm" id="worm"><label for="worm">WORM</label>
+            <input type="radio" name="speed" onchange="Speed(this)" value="python" id="python"><label for="python">PYTHON</label>
+            <p>APPLES:</p>
+            <input type="radio" value="1" onchange="changeAppleCount(this)" name="apples" checked id="1"> <label for="1">1</label>
+            <input type="radio" value="2" onchange="changeAppleCount(this)" name="apples" id="2"><label for="2">2</label>
+            <input type="radio" value="3" onchange="changeAppleCount(this)" name="apples" id="3"><label for="3">3</label>
+            <br>
         
-        <!-- <div class="icon">
-            <label for="eyes">EYES:</label>
-            <select name="eyes" id="eyes">
-                <option value="../img/zold.png">GREEN</option>
-                <option value="../img/sarga.png">YELLOW</option>
-                <option value="../img/kek.png">BLUE</option>
-                <option value="../img/anime_szem.png">ANIME</option>
+            <!-- <div class="icon">
+                <label for="eyes">EYES:</label>
+                <select name="eyes" id="eyes">
+                    <option value="../img/zold.png">GREEN</option>
+                    <option value="../img/sarga.png">YELLOW</option>
+                    <option value="../img/kek.png">BLUE</option>
+                    <option value="../img/anime_szem.png">ANIME</option>
+                </select>
+            </div> -->
+        
+            <p>MAP SIZE:</p>
+            <div class="speed_set">
+                <div class="speed"><input type="radio" name="map" id="small" value="small" onchange="MapSize(this)"> <label for="small">SMALL</label></div>
+                <div class="speed"><input type="radio" checked name="map" id="mid" value="mid" onchange="MapSize(this)"><label for="mid">MID</label></div>
+                <div class="speed"><input type="radio" name="map" id="big" value="big" onchange="MapSize(this)"><label for="big">BIG</label></div>
+            </div>
+        
+            <label for="icon">ICON:</label>
+            <select onchange="changeFood(this)" name="icon" id="icon">
+                <option value="apple.png" id="apple.png" >APPLE</option>
+                <option value="star.png" id="star.png" >STAR</option>
+                <option value="banana.png" id="banana.png" >BANANA</option>
+                <option value="pineapple.png" id="pineapple.png" >PINEAPPLE</option>
             </select>
-        </div> -->
         
-        <p>MAP SIZE:</p>
-        <div class="speed_set">
-            <div class="speed"><input type="radio" name="map" id="small" value="small" onchange="MapSize(this)"> <label for="small">SMALL</label></div>
-            <div class="speed"><input type="radio" checked name="map" id="mid" value="mid" onchange="MapSize(this)"><label for="mid">MID</label></div>
-            <div class="speed"><input type="radio" name="map" id="big" value="big" onchange="MapSize(this)"><label for="big">BIG</label></div>
         </div>
-        
-        <label for="icon">ICON:</label>
-        <select onchange="changeFood(this)" name="icon" id="icon">
-            <option value="apple.png" id="apple.png" >APPLE</option>
-            <option value="star.png" id="star.png" >STAR</option>
-            <option value="banana.png" id="banana.png" >BANANA</option>
-            <option value="pineapple.png" id="pineapple.png" >PINEAPPLE</option>
-        </select>
-        
-
+        <div>
+            <canvas width="10" height="10" id="gameCanvas" class="centered"></canvas>
+            <h2 id="gameOver" class="centered">GAME OVER</h2>
+            <div class="centered">
+                <button id="lossButton" onclick="restart(this)"><p>Restart</p></button>
+            </div>
+        </div>
+        <div>
+            <img src="img/disz_kigyo.png" alt="">
+        </div>
     </div>
-    <canvas width="10" height="10" id="gameCanvas" class="centered"></canvas>
-    <div class="centered">
-        <button id="lossButton" onclick="restart(this)"><p>Restart</p></button>
-    </div>
-    <h2 id="gameOver" class="centered">GAME OVER</h2>
-    <img src="img/disz_kigyo.png" class="right" alt="">
-
+    
     <div id="scores">
         <h3 id="score">SCORE:</h3>
         <h3 id="best_score">BEST SCORE:</h3>
     </div>
-
+    
 
         
 
