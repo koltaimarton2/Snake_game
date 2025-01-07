@@ -30,7 +30,8 @@ food.src = "../img/apple.png"
 
 
 
-let interval = 2000;
+let interval = 200;
+let timerID;
 
 
 document.getElementById("colorpick").value = sessionStorage.getItem("colorpick");    
@@ -65,19 +66,21 @@ function MapSize(input) {
 
 function Speed(input) {
     if (input.id == "python") {
-        interval = 750
+        interval = 75
     }
     else if (input.id == "worm") {
-        interval = 2000
+        interval = 200
     }
-    else if (input.value == "slug"){
-        interval *=5
+    else if (input.id == "slug"){
+        interval = 500
     }
     startGame()
 } 
 
 
 function startGame(){
+    clearInterval(timerID);
+
     canvas = document.getElementById("gameCanvas");
     canvas.setAttribute('width', columnCount * blockSize);
     canvas.setAttribute('height', rowCount * blockSize);
@@ -87,7 +90,8 @@ function startGame(){
     placeFood();
 
     document.addEventListener("keydown", moveSnake);
-    setInterval(update, interval / 10);
+    update();
+    timerID = setInterval(update, interval);
 }
 
 function update() {
