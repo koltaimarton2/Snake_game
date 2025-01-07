@@ -72,7 +72,7 @@ function Speed(input) {
         interval = 200
     }
     else if (input.id == "slug"){
-        interval = 500
+        interval = 350
     }
     startGame()
 } 
