@@ -15,9 +15,16 @@ let snakeBody = [[0,0]]
 
 
 
+var appleCount = 1;
 
 let foodX;
 let foodY;
+
+let foodX2;
+let foodY2;
+
+let foodX3;
+let foodY3;
 
 
 let gameOver = false;
@@ -48,18 +55,24 @@ function MapSize(input) {
         rowCount = 20
         columnCount = 20
         placeFood()
+        placeFood2()
+        placeFood3()
     }
     else if (input.value == "mid") {
         blockSize = 33.33
         rowCount = 15
         columnCount = 15
         placeFood()
+        placeFood2()
+        placeFood3()
     }
     else {
         blockSize = 50
         rowCount = 10
         columnCount =10
         placeFood()
+        placeFood2()
+        placeFood3()
     }
 } 
 
@@ -88,6 +101,8 @@ function startGame(){
     canvas.style.height = rowCount * blockSize
     context = canvas.getContext("2d");
     placeFood();
+    placeFood2();
+    placeFood3();
 
     document.addEventListener("keydown", moveSnake);
     update();
@@ -104,21 +119,61 @@ function update() {
     // context.fillStyle = "red"
     // context.fillRect(foodX, foodY, blockSize, blockSize);
 
-    context.drawImage(food, foodX, foodY, blockSize, blockSize);
-    
 
-
-    
     const lastBlock = snakeBody[-1]
+    
+    
+    //1 alma
+    if (appleCount == 1) {
+        context.drawImage(food, foodX, foodY, blockSize, blockSize);
+        if (Math.floor(snakeBody[0][0]) == Math.floor(foodX) && Math.floor(snakeBody[0][1]) == Math.floor(foodY)) {
+            placeFood();
+            snakeBody.push(lastBlock);
+        }
+    }
+    
+    //2 alma
+    if (appleCount == 2) {
+        context.drawImage(food, foodX, foodY, blockSize, blockSize);
+        context.drawImage(food, foodX2, foodY2, blockSize, blockSize);
+        if (Math.floor(snakeBody[0][0]) == Math.floor(foodX) && Math.floor(snakeBody[0][1]) == Math.floor(foodY)) {
+            placeFood();
+            snakeBody.push(lastBlock);
+        }
+        if (Math.floor(snakeBody[0][0]) == Math.floor(foodX2) && Math.floor(snakeBody[0][1]) == Math.floor(foodY2)) {
+            placeFood2();
+            snakeBody.push(lastBlock);
+        }
+    }
+
+    //3 alma
+    if (appleCount == 3) {
+        context.drawImage(food, foodX, foodY, blockSize, blockSize);
+        context.drawImage(food, foodX2, foodY2, blockSize, blockSize);
+        context.drawImage(food, foodX3, foodY3, blockSize, blockSize);
+        if (Math.floor(snakeBody[0][0]) == Math.floor(foodX) && Math.floor(snakeBody[0][1]) == Math.floor(foodY)) {
+            placeFood();
+            snakeBody.push(lastBlock);
+        }
+        if (Math.floor(snakeBody[0][0]) == Math.floor(foodX2) && Math.floor(snakeBody[0][1]) == Math.floor(foodY2)) {
+            placeFood2();
+            snakeBody.push(lastBlock);
+        }
+        if (Math.floor(snakeBody[0][0]) == Math.floor(foodX3) && Math.floor(snakeBody[0][1]) == Math.floor(foodY3)) {
+            placeFood3();
+            snakeBody.push(lastBlock);
+        }
+
+    }
+    
+
+
+    
     
     for (let i = snakeBody.length - 1; i > 0; i--) {
         snakeBody[i] = snakeBody[i-1]
     }
     
-    if (Math.floor(snakeBody[0][0]) == Math.floor(foodX) && Math.floor(snakeBody[0][1]) == Math.floor(foodY)) {
-        placeFood();
-        snakeBody.push(lastBlock);
-    }
     context.fillStyle = snakeColor;
     
     snakeX += speedX * blockSize;
@@ -173,7 +228,17 @@ function moveSnake(e) {
 function placeFood() {
     foodX = Math.floor(Math.random() * columnCount) * blockSize;
     foodY = Math.floor(Math.random() * rowCount) * blockSize;
-    console.log('Food placed', foodX, ' ', foodY)
+    console.log('Food placed', foodX, ' ', foodY);
+}
+
+function placeFood2() {
+    foodX2 = Math.floor(Math.random() * columnCount) * blockSize;
+    foodY2 = Math.floor(Math.random() * rowCount) * blockSize;
+}
+
+function placeFood3() {
+    foodX3 = Math.floor(Math.random() * columnCount) * blockSize;
+    foodY3 = Math.floor(Math.random() * rowCount) * blockSize;
 }
 
 function lossScreen() {
@@ -196,6 +261,14 @@ function changeFood(source) {
     food.src = '../img/'+ source.value
     placeFood()
 }
+
+function changeAppleCount(count) {
+    appleCount = count.value
+    startGame()
+}
+
+
+
 
 
 
