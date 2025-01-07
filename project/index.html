@@ -18,16 +18,16 @@
         <input type="radio" name="speed" checked onchange="Speed(this)" value="worm" id="worm"><label for="worm">WORM</label>
         <input type="radio" name="speed" onchange="Speed(this)" value="python" id="python"><label for="python">PYTHON</label>
         <p>APPLES:</p>
-        <input type="radio" name="apples" id="1"> <label for="1">1</label>
+        <input type="radio" name="apples" checked id="1"> <label for="1">1</label>
         <input type="radio" name="apples" id="2"><label for="2">2</label>
         <input type="radio" name="apples" id="3"><label for="3">3</label>
         <br>
         <label for="icon">ICON:</label>
-        <select name="icon" id="icon">
-            <option value="APPLE">APPLE</option>
-            <option>STAR</option>
-            <option>BANANA</option>
-            <option>PINEAPPLE</option>
+        <select onchange="changeFood(this)" name="icon" id="icon">
+            <option value="apple.png" >APPLE</option>
+            <option value="star.png" >STAR</option>
+            <option value="banana.png" >BANANA</option>
+            <option value="pineapple.png" >PINEAPPLE</option>
         </select>
 
         <div class="icon">

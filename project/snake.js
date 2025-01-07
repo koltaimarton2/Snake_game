@@ -23,7 +23,12 @@ let foodY;
 let gameOver = false;
 
 let snakeColor = '#ffffff'
-let food = 'apple.jpeg'
+
+
+let food = new Image(blockSize, blockSize)
+food.src = "../img/apple.png"
+
+
 
 let interval = 2000;
 
@@ -92,8 +97,10 @@ function update() {
     context.fillStyle = "#9BBA5A";
     context.fillRect(0, 0, canvas.width, canvas.height);
     // context.drawImage(food, foodX, foodY)
-    context.fillStyle = "red"
-    context.fillRect(foodX, foodY, blockSize, blockSize);
+    // context.fillStyle = "red"
+    // context.fillRect(foodX, foodY, blockSize, blockSize);
+
+    context.drawImage(food, foodX, foodY, blockSize, blockSize);
     
 
 
@@ -179,6 +186,11 @@ function restart(button) {
 
 function changeColor(color) {
     snakeColor = color.value
+}
+
+function changeFood(source) {
+    food.src = '../img/'+ source.value
+    placeFood()
 }
 
 
