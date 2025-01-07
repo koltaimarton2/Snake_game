@@ -29,13 +29,17 @@ let foodY3;
 
 let gameOver = false;
 
-let snakeColor = '#ffffff'
 
 
 let food = new Image(blockSize, blockSize)
 food.src = "../img/apple.png"
 
+food.src = "../img/" + sessionStorage.getItem("source")
 
+document.getElementById(sessionStorage.getItem("source")).selected = true;
+
+let bestScore = 0;
+bestScore = sessionStorage.getItem("bestId");
 
 let interval = 200;
 let timerID;
@@ -43,14 +47,24 @@ let timerID;
 
 document.getElementById("colorpick").value = sessionStorage.getItem("colorpick");    
 snakeColor = sessionStorage.getItem("colorpick");
+
+document.getElementById(sessionStorage.getItem("appleCount")).checked = true;
+appleCount = sessionStorage.getItem("appleCount");
+
+document.getElementById(sessionStorage.getItem("mapSize")).checked = true;
+SetupMap(sessionStorage.getItem("mapSize"));
+
+document.getElementById(sessionStorage.getItem("speed")).checked = true;
+SetupSpeed(sessionStorage.getItem("speed"));
+
 function saveValue(e){
     var id = e.id;
     var val = e.value;
     sessionStorage.setItem(id, val);
 }
 
-function MapSize(input) {
-    if (input.value == "big") {
+function SetupMap(mapSize) {
+    if (mapSize == "big") {
         blockSize = 25
         rowCount = 20
         columnCount = 20
@@ -58,7 +72,7 @@ function MapSize(input) {
         placeFood2()
         placeFood3()
     }
-    else if (input.value == "mid") {
+    else if (mapSize == "mid") {
         blockSize = 33.33
         rowCount = 15
         columnCount = 15
@@ -66,7 +80,7 @@ function MapSize(input) {
         placeFood2()
         placeFood3()
     }
-    else {
+    else if (mapSize == "small") {
         blockSize = 50
         rowCount = 10
         columnCount =10
@@ -74,26 +88,38 @@ function MapSize(input) {
         placeFood2()
         placeFood3()
     }
+}
+
+function MapSize(input) {
+    mapSize = input.value;
+    SetupMap(mapSize);
+    sessionStorage.setItem("mapSize", mapSize);
 } 
 
-
-function Speed(input) {
-    if (input.id == "python") {
+function SetupSpeed(speed) {
+    if (speed == "python") {
         interval = 75
     }
-    else if (input.id == "worm") {
+    else if (speed == "worm") {
         interval = 200
     }
-    else if (input.id == "slug"){
+    else if (speed == "slug"){
         interval = 350
     }
     startGame()
+}
+
+function Speed(input) {
+    speed = input.id
+    SetupSpeed(speed);
+    sessionStorage.setItem("speed",speed)
 } 
 
 
 function startGame(){
     clearInterval(timerID);
 
+    writeBestScore();
     canvas = document.getElementById("gameCanvas");
     canvas.setAttribute('width', columnCount * blockSize);
     canvas.setAttribute('height', rowCount * blockSize);
@@ -107,6 +133,8 @@ function startGame(){
     document.addEventListener("keydown", moveSnake);
     update();
     timerID = setInterval(update, interval);
+
+    setInterval(keepScore, 50);
 }
 
 function update() {
@@ -188,15 +216,23 @@ function update() {
     // console.log(snakeBody)
     
     if (snakeX < 0 || snakeX > columnCount * blockSize - blockSize|| snakeY < 0 || snakeY > rowCount * blockSize -blockSize) { 
-         gameOver = true;
-         console.log(snakeX)
-         lossScreen()
+        gameOver = true;
+        console.log(snakeX)
+
+        updateBestScore(bestScore, snakeBody.length -1)
+
+        lossScreen()
     }
 
     for (let i = 1; i < snakeBody.length -1 ; i++) {
          if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) { 
-             gameOver = true;
-             lossScreen()
+            gameOver = true;
+             
+            updateBestScore(bestScore, snakeBody.length -1)
+
+            
+
+            lossScreen()
          }
      }
 }
@@ -259,15 +295,30 @@ function changeColor(color) {
 
 function changeFood(source) {
     food.src = '../img/'+ source.value
-    placeFood()
+    sessionStorage.setItem('source', source.value)
 }
 
 function changeAppleCount(count) {
-    appleCount = count.value
+    appleCount = count.value    
+    sessionStorage.setItem("appleCount", appleCount)
     startGame()
 }
 
+function keepScore() {
 
+    document.getElementById("score").innerHTML = "SCORE: " + (snakeBody.length-1)
+}
+
+function writeBestScore() {
+    document.getElementById("best_score").innerHTML = "BEST SCORE: " + (bestScore)
+}
+
+function updateBestScore(best, recent) {
+    if (recent > best) {
+        bestScore = recent
+    }
+    sessionStorage.setItem("bestId", bestScore)
+}
 
 
 
