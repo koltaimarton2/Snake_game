@@ -33,30 +33,44 @@ let gameOver = false;
 
 let food = new Image(blockSize, blockSize)
 food.src = "../img/apple.png"
+if (sessionStorage.getItem("source"))
+food.src = "../img/" + sessionStorage.getItem("source");
 
-food.src = "../img/" + sessionStorage.getItem("source")
-
+if (sessionStorage.getItem("source")) 
 document.getElementById(sessionStorage.getItem("source")).selected = true;
 
-let bestScore = 0;
+var bestScore = 0;
 bestScore = sessionStorage.getItem("bestId");
 
 let interval = 200;
-let timerID;
-
+var timerID;
 
 document.getElementById("colorpick").value = sessionStorage.getItem("colorpick");    
 snakeColor = sessionStorage.getItem("colorpick");
 
+if (sessionStorage.getItem("appleCount")) {
 document.getElementById(sessionStorage.getItem("appleCount")).checked = true;
 appleCount = sessionStorage.getItem("appleCount");
+}
+else {
+    appleCount = 1
+}
 
+if (sessionStorage.getItem("mapSize")) {
 document.getElementById(sessionStorage.getItem("mapSize")).checked = true;
 SetupMap(sessionStorage.getItem("mapSize"));
+}
+else {
+    SetupMap("small")
+}
 
+if (sessionStorage.getItem("speed")) {
 document.getElementById(sessionStorage.getItem("speed")).checked = true;
 SetupSpeed(sessionStorage.getItem("speed"));
-
+}
+else {
+    SetupSpeed("worm")
+}
 function saveValue(e){
     var id = e.id;
     var val = e.value;
@@ -117,8 +131,9 @@ function Speed(input) {
 
 
 function startGame(){
-    clearInterval(timerID);
-
+    if (timerID) {
+        clearInterval(timerID);
+    }
     writeBestScore();
     canvas = document.getElementById("gameCanvas");
     canvas.setAttribute('width', columnCount * blockSize);
